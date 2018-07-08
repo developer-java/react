@@ -1,31 +1,58 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
 import styled from 'styled-components';
+
+import Header from './components/Header';
+import Main from './components/Main';
+import Menu from './components/Menu';
+
+const url = process.env.PUBLIC_URL + '/img/bg.png';
+
+const StyledHeader = styled.header`
+    width:100%;
+    height: 49px;
+    background-color: #242424
+    opacity: 0.8;
+`
+
+const StyledMenu = styled.div`
+    height: 89px;
+    padding-top: 20px;
+`
+
+const StyledMain = styled.main`
+    height: 600px;
+    padding-top:130px;
+    background: url(${url}) no-repeat;
+    background-size: cover;
+`
+
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <MyBlocks name="Magzhan" country="Kazakhstan" link="http://www.magjan.info"/>
-        <MyBlocks name="Fake Name1" country="Fake Country1" link="#fake_link1"/>
-        <MyBlocks name="Fake Name2" country="Fake Country2" link="#fake_link2"/>
+      <div className="App">
+          <StyledHeader>
+              <Grid>
+                  <Header/>
+              </Grid>
+          </StyledHeader>
+
+          <StyledMenu>
+              <Grid>
+                  <Menu/>
+              </Grid>
+          </StyledMenu>
+
+          <StyledMain>
+              <Grid>
+                  <Main/>
+              </Grid>
+          </StyledMain>
       </div>
     );
   }
-}
-
-function MyBlocks(props) {
-    return(
-        <div className="myBlock">
-            <a href={props.link} target="_blank">
-                <p>My name is {props.name}, i'm from {props.country}</p>
-            </a>
-        </div>
-    )
 }
 
 export default App;
